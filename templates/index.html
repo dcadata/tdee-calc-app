@@ -20,6 +20,7 @@
                 <option value="kg">kg - kilograms</option>
             </select>
         </div>
+        <br>
 
         <label for="height">Enter Height and Units</label>
         <div class="side-by-side-num-inputs">
@@ -29,9 +30,12 @@
                 <option value="cm">cm - centimeters</option>
             </select>
         </div>
+        <br>
 
         <label for="age">Enter Age</label>
         <input type="number" id="age" name="age">
+        <br>
+        <br>
 
         <label for="sex">Select Sex</label>
         <select id="sex" name="sex">
@@ -39,6 +43,8 @@
             <option value="F">F</option>
             <option value="M">M</option>
         </select>
+        <br>
+        <br>
 
         <label for="activityLevel">Select Activity Level</label>
         <select id="activityLevel" name="activityLevel">
@@ -46,8 +52,10 @@
             <option value="{{item}}">{{item}}</option>
             {% endfor %}
         </select>
+        <br>
+        <br>
 
-        <button type="button" id="submitBtn">Search</button>
+        <button type="button" id="submitBtn">Calculate</button>
     </form>
     <br>
 
