@@ -20,8 +20,14 @@ def index():
     sex = payload.get('sex')
     activityLevel = payload.get('activityLevel')
 
-    result = [{'No results found.': ''}]
-    if not (weight and height and age):
+    result = []
+    if not weight:
+        result.append({'Error(s)': 'Enter weight.'})
+    if not height:
+        result.append({'Error(s)': 'Enter height.'})
+    if not age:
+        result.append({'Error(s)': 'Enter age.'})
+    if result:
         return result
 
     params = dict(
@@ -47,7 +53,6 @@ def index():
         'At +3 activity level': tdee.get_changed_activity_level(2, **params),
     }
 
-    result = []
     current_bmr, current_tdee = tdee.calculate_bmr_and_tdee(**params)
     for scenario, prm in extra_params.items():
         result_bmr, result_tdee = tdee.calculate_bmr_and_tdee(**prm)
