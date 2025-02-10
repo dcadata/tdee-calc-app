@@ -45,7 +45,7 @@ def index():
         'After 20 lb loss': tdee.change_weight(**params, weight_change=-20),
         'If 6 in taller': tdee.change_height(**params, height_change=6),
         'If 6 in shorter': tdee.change_height(**params, height_change=-6),
-        'If 5y older': tdee.change_age(**params, age_change=5),
+        'If 10y younger': tdee.change_age(**params, age_change=-10),
         'If 10y older': tdee.change_age(**params, age_change=10),
         'If other sex': tdee.change_sex(**params),
         'At +1 activity level': tdee.get_changed_activity_level(0, **params),
