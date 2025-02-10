@@ -72,7 +72,7 @@ def change_age(**kwargs) -> dict[str, float]:
 
 
 def change_sex(**kwargs) -> dict[str, float]:
-    kwargs['sex'] = {Sex.F: Sex.M, Sex.M: Sex.F}[kwargs['sex'].upper()]
+    kwargs['sex'] = {Sex.F: Sex.M, Sex.M: Sex.F}.get(kwargs['sex'].upper())
     return kwargs
 
 
