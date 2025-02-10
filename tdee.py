@@ -1,6 +1,6 @@
 import json
 
-_ACTIVITY_LEVELS: dict[str, float] = json.load(open('activity_levels.json'))
+ACTIVITY_LEVELS: dict[str, float] = json.load(open('activity_levels.json'))
 
 
 class Unit:
@@ -33,7 +33,7 @@ def calculate_bmr_and_tdee(**kwargs) -> dict[str, int]:
     activity_level: str = kwargs.get('activity_level')
 
     sex_adjustment: int = 0
-    activity_adjustment: float = _ACTIVITY_LEVELS.get(activity_level, 1)
+    activity_adjustment: float = ACTIVITY_LEVELS.get(activity_level, 1)
 
     if weight_unit == Unit.LB:
         weight *= UnitConvMultiplier.LB_TO_KG
