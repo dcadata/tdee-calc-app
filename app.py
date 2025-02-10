@@ -42,17 +42,21 @@ def index():
         'If 5y older': tdee.change_age(**params, age_change=5),
         'If 10y older': tdee.change_age(**params, age_change=10),
         'If other sex': tdee.change_sex(**params),
+        'At +1 activity level': tdee.get_changed_activity_level(0, **params),
+        'At +2 activity level': tdee.get_changed_activity_level(1, **params),
+        'At +3 activity level': tdee.get_changed_activity_level(2, **params),
     }
 
     result = []
+    current_bmr, current_tdee = tdee.calculate_bmr_and_tdee(**params)
     for scenario, prm in extra_params.items():
         result_bmr, result_tdee = tdee.calculate_bmr_and_tdee(**prm)
-        result.extend([
-            dict(Scenario=scenario, Value=''),
-            dict(Scenario='Basal Metabolic Rate (BMR)', Value=result_bmr),
-            dict(Scenario='Total Daily Energy Expenditure (TDEE)', Value=result_tdee),
-            dict(Scenario='', Value=''),
-        ])
+        result.extend([{
+            'Scenario': scenario,
+            'BMR': result_bmr,
+            'TDEE': result_tdee,
+            'ΔTDEE': result_tdee - current_tdee,
+        }])
 
     return jsonify(result)
 
