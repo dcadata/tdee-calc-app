@@ -1,5 +1,5 @@
 body {
-    font-family: Poppins;
+    font-family: Lato;
     font-size: 16px;
     line-height: 1.6;
     margin: 0 auto;
@@ -56,8 +56,8 @@ form div.side-by-side-num-inputs input {
     padding: 5px;
 }
 
-    font-family: Poppins;
 form button {
+    font-family: Lato;
     background-color: #643;
     color: #fdc;
     padding: 10px;
