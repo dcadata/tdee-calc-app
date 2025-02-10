@@ -23,7 +23,7 @@ class SexAdjustment:
     M: int = 5
 
 
-def calculate_bmr_and_tdee(**kwargs) -> dict[str, int]:
+def calculate_bmr_and_tdee(**kwargs) -> tuple[int, int]:
     weight: float = kwargs.get('weight')
     weight_unit: str = kwargs.get('weight_unit')
     height: float = kwargs.get('height')
@@ -47,7 +47,7 @@ def calculate_bmr_and_tdee(**kwargs) -> dict[str, int]:
 
     bmr = (10 * weight) + (6.25 * height) - (5 * age) + sex_adjustment
     tdee = bmr * activity_adjustment
-    return dict(bmr=int(bmr), tdee=int(tdee))
+    return int(bmr), int(tdee)
 
 
 def change_weight(**kwargs) -> dict[str, float]:
