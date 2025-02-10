@@ -39,7 +39,7 @@ def index():
         sex=sex,
         activity_level=activityLevel,
     )
-    extra_params = {
+    scenarios_with_modified_params = {
         'As entered': params,
         'After 10 lb loss': tdee.change_weight(**params, weight_change=-10),
         'After 20 lb loss': tdee.change_weight(**params, weight_change=-20),
@@ -53,14 +53,14 @@ def index():
         'At +3 activity level': tdee.get_changed_activity_level(2, **params),
     }
 
-    current_bmr, current_tdee = tdee.calculate_bmr_and_tdee(**params)
-    for scenario, prm in extra_params.items():
-        result_bmr, result_tdee = tdee.calculate_bmr_and_tdee(**prm)
+    actual_bmr, actual_tdee = tdee.calculate_bmr_and_tdee(**params)
+    for scenario_label, modified_params in scenarios_with_modified_params.items():
+        scenario_bmr, scenario_tdee = tdee.calculate_bmr_and_tdee(**modified_params)
         result.extend([{
-            'Scenario': scenario,
-            'BMR': result_bmr,
-            'TDEE': result_tdee,
-            'ΔTDEE': result_tdee - current_tdee,
+            'Scenario': scenario_label,
+            'BMR': scenario_bmr,
+            'TDEE': scenario_tdee,
+            'ΔTDEE': scenario_tdee - actual_tdee,
         }])
 
     return jsonify(result)
