@@ -1,0 +1,97 @@
+body {
+    font-family: Poppins;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #310;
+    color: #fdc;
+}
+
+h1 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+h4 a {
+    color: #fdc;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background: #421;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+form label {
+    grid-column: 1 / 2;
+    text-align: right;
+}
+
+form input, form select {
+    grid-column: 2 / 2;
+    font-family: Arial;
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #4f2f1f;
+    border: 1px solid #fdc;
+    border-radius: 5px;
+    color: #fdc;
+}
+
+.side-by-side-num-inputs {
+    grid-column: 2 / 2;
+    display: flex;
+    gap: 10px;
+}
+
+.side-by-side-num-inputs input {
+    font-family: Arial;
+    font-size: 14px;
+    width: 100px;
+    padding: 5px;
+}
+
+button {
+    font-family: Poppins;
+    grid-column: 1 / 3;
+    background-color: #643;
+    color: #fdc;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #6f4f3f;
+}
+
+.result {
+    background: #421;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid #fdc;
+}
