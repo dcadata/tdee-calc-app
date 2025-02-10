@@ -81,3 +81,13 @@ def change_activity_level(**kwargs) -> dict[str, float]:
     if changed_activity_level:
         kwargs['activity_level'] = changed_activity_level
     return kwargs
+
+
+def get_changed_activity_level(idx: int = 0, **kwargs) -> dict[str, float]:
+    current_activity_level = kwargs.get('activity_level')
+    activity_levels = list(ACTIVITY_LEVELS.keys())
+    new_level = None
+    while new_level != current_activity_level:
+        new_level = activity_levels.pop(0)
+    new_level = activity_levels.pop(idx)
+    return change_activity_level(**kwargs, changed_activity_level=new_level)
