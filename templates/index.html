@@ -8,66 +8,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Calculate Your BMR/TDEE</h1>
-    <h4>Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) based on the <a href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation">Mifflin-St. Jeor equation</a>.</h4>
+<h1>Calculate Your BMR/TDEE</h1>
+<h4>Calculate your Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) based on the <a
+        href="https://reference.medscape.com/calculator/846/mifflin-st-jeor-equation">Mifflin-St. Jeor equation</a>.
+</h4>
 
-    <form id="filterForm">
-        <label for="weight">Enter Weight and Units</label>
-        <div class="side-by-side-num-inputs">
-            <input type="number" id="weight" name="weight">
-            <select id="weight_unit" name="weight_unit">
-                <option value="lb">lb - pounds</option>
-                <option value="kg">kg - kilograms</option>
-            </select>
-        </div>
-        <br>
-
-        <label for="height">Enter Height and Units</label>
-        <div class="side-by-side-num-inputs">
-            <input type="number" id="height" name="height">
-            <select id="height_unit" name="height_unit">
-                <option value="in">in - inches</option>
-                <option value="cm">cm - centimeters</option>
-            </select>
-        </div>
-        <br>
-
-        <label for="age">Enter Age</label>
-        <input type="number" id="age" name="age">
-        <br>
-        <br>
-
-        <label for="sex">Select Sex</label>
-        <select id="sex" name="sex">
-            <option value="">Select</option>
-            <option value="F">F</option>
-            <option value="M">M</option>
+<form id="filterForm">
+    <label for="weight">Enter Weight and Units</label>
+    <div class="side-by-side-num-inputs">
+        <input type="number" id="weight" name="weight">
+        <select id="weight_unit" name="weight_unit">
+            <option value="lb">lb - pounds</option>
+            <option value="kg">kg - kilograms</option>
         </select>
-        <br>
-        <br>
-
-        <label for="activityLevel">Select Activity Level</label>
-        <select id="activityLevel" name="activityLevel">
-            {% for item in activity_levels %}
-            <option value="{{item}}">{{item}}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <br>
-
-        <button type="button" id="submitBtn">Calculate</button>
-    </form>
+    </div>
     <br>
 
-    <div class="result">
-        <table id="resultsTable" border="1">
-            <thead>
-                <tr id="resultsTableHeader"></tr>
-            </thead>
-            <tbody id="resultsTableBody"></tbody>
-        </table>
+    <label for="height">Enter Height and Units</label>
+    <div class="side-by-side-num-inputs">
+        <input type="number" id="height" name="height">
+        <select id="height_unit" name="height_unit">
+            <option value="in">in - inches</option>
+            <option value="cm">cm - centimeters</option>
+        </select>
     </div>
+    <br>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <label for="age">Enter Age</label>
+    <input type="number" id="age" name="age">
+    <br>
+    <br>
+
+    <label for="sex">Select Sex</label>
+    <select id="sex" name="sex">
+        <option value="">Select</option>
+        <option value="F">F</option>
+        <option value="M">M</option>
+    </select>
+    <br>
+    <br>
+
+    <label for="activityLevel">Select Activity Level</label>
+    <select id="activityLevel" name="activityLevel">
+        {% for item in activity_levels %}
+        <option value="{{item}}">{{item}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+
+    <button type="button" id="submitBtn">Calculate</button>
+</form>
+<br>
+
+<div class="result">
+    <table id="resultsTable" border="1">
+        <thead>
+        <tr id="resultsTableHeader"></tr>
+        </thead>
+        <tbody id="resultsTableBody"></tbody>
+    </table>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
