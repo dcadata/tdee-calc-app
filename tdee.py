@@ -47,7 +47,7 @@ def calculate_bmr_and_tdee(**kwargs) -> tuple[int, int]:
 
     bmr = (10 * weight) + (6.25 * height) - (5 * age) + sex_adjustment
     tdee = bmr * activity_adjustment
-    return int(bmr), int(tdee)
+    return int(round(bmr)), int(round(tdee))
 
 
 def change_weight(**kwargs) -> dict[str, float]:
