@@ -1,6 +1,4 @@
-import json
-
-ACTIVITY_LEVELS: dict[str, float] = json.load(open('activity_levels.json'))
+import pandas as pd
 
 
 class Unit:
@@ -23,6 +21,11 @@ class SexAdjustment:
     M: int = 5
 
 
+def read_activity_levels() -> pd.DataFrame:
+    activity_levels = pd.read_json('activity_levels.json', dtype=dict(id=int, label=str, value=float))
+    return activity_levels
+
+
 def calculate_bmr_and_tdee(**kwargs) -> tuple[int, int]:
     weight: float = kwargs.get('weight')
     weight_unit: str = kwargs.get('weight_unit')
@@ -30,10 +33,18 @@ def calculate_bmr_and_tdee(**kwargs) -> tuple[int, int]:
     height_unit: str = kwargs.get('height_unit')
     age: float = kwargs.get('age')
     sex: str = kwargs.get('sex')
-    activity_level: str = kwargs.get('activity_level')
-
+    activity_level: str | int = kwargs.get('activity_level')
     sex_adjustment: int = 0
-    activity_adjustment: float = ACTIVITY_LEVELS.get(activity_level, 1)
+
+    # get activity adjustment from activity level input
+    activity_levels: pd.DataFrame = read_activity_levels()
+    if type(activity_level) == str:
+        activity_adjustment: pd.DataFrame = activity_levels[activity_levels.label == activity_level]
+    elif type(activity_level) == int:
+        activity_adjustment: pd.DataFrame = activity_levels[activity_levels.id == activity_level]
+    else:
+        activity_adjustment: pd.DataFrame = activity_levels[activity_levels.value == activity_level]
+    activity_adjustment: float = activity_adjustment.iloc[0].value
 
     if weight_unit == Unit.LB:
         weight *= UnitConvMultiplier.LB_TO_KG
@@ -85,9 +96,9 @@ def change_activity_level(**kwargs) -> dict[str, float]:
 
 def get_changed_activity_level(idx: int = 0, **kwargs) -> dict[str, float]:
     current_activity_level = kwargs.get('activity_level')
-    activity_levels = list(ACTIVITY_LEVELS.keys())
-    new_level = None
-    while new_level != current_activity_level:
-        new_level = activity_levels.pop(0)
-    new_level = activity_levels.pop(idx)
-    return change_activity_level(**kwargs, changed_activity_level=new_level)
+    activity_levels = list(read_activity_levels()[['id', 'label']].to_records(index=False))
+    new_activity_level: tuple = (None, None)
+    while current_activity_level not in new_activity_level:
+        new_activity_level = activity_levels.pop(0)
+    new_activity_level = activity_levels.pop(idx)
+    return change_activity_level(**kwargs, changed_activity_level=new_activity_level[0])
