@@ -1,12 +1,52 @@
-{
-  "Completely Paralyzed, Comatose, Unable to Move Without the Aid of Others": 1.0,
-  "Immobile, Stationary with Some Arm Movement, Bedridden or Partially Paralyzed": 1.05,
-  "Constricted Lifestyle, Movement is Limited to a Confined Space, Almost Always Sitting or Laying": 1.1,
-  "Working From Home with Little to No Travel, No Exercise, Some Walking, Mostly Sitting or Laying": 1.16,
-  "Sedentary Lifestyle, Little or No Exercise, Moderate Walking, Desk Job (Away from Home)": 1.2,
-  "Slightly Active, Exercise or Light Sports 1 to 3 Days a Week, Light Jogging or Walking 3 to 4 Days a Week": 1.375,
-  "Lightly Active, Exercise or Moderate Sports 2 to 3 Days a Week, Light Jogging or Walking 5 to 7 Days a Week": 1.425,
-  "Moderately Active, Physical Work, Exercise, or Sports 4 to 5 Days a Week, Construction Laborer": 1.55,
-  "Very Active, Heavy Physical Work, Exercise, or Sports 6 to 7 Days a Week, Hard Laborer": 1.75,
-  "Extremely Active, Very Heavy Physical Work or Exercise Every Day, Professional/Olympic Athlete": 1.9
-}
+[
+  {
+    "id": 1,
+    "label": "Completely Paralyzed, Comatose, Unable to Move Without the Aid of Others",
+    "value": 1.0
+  },
+  {
+    "id": 2,
+    "label": "Immobile, Stationary with Some Arm Movement, Bedridden or Partially Paralyzed",
+    "value": 1.05
+  },
+  {
+    "id": 3,
+    "label": "Constricted Lifestyle, Movement is Limited to a Confined Space, Almost Always Sitting or Laying",
+    "value": 1.1
+  },
+  {
+    "id": 4,
+    "label": "Working From Home with Little to No Travel, No Exercise, Some Walking, Mostly Sitting or Laying",
+    "value": 1.16
+  },
+  {
+    "id": 5,
+    "label": "Sedentary Lifestyle, Little or No Exercise, Moderate Walking, Desk Job (Away from Home)",
+    "value": 1.2
+  },
+  {
+    "id": 6,
+    "label": "Slightly Active, Exercise or Light Sports 1 to 3 Days a Week, Light Jogging or Walking 3 to 4 Days a Week",
+    "value": 1.375
+  },
+  {
+    "id": 7,
+    "label": "Lightly Active, Exercise or Moderate Sports 2 to 3 Days a Week, Light Jogging or Walking 5 to 7 Days a Week",
+    "value": 1.425
+  },
+  {
+    "id": 8,
+    "label": "Moderately Active, Physical Work, Exercise, or Sports 4 to 5 Days a Week, Construction Laborer",
+    "value": 1.55
+  },
+  {
+    "id": 9,
+    "label": "Very Active, Heavy Physical Work, Exercise, or Sports 6 to 7 Days a Week, Hard Laborer",
+    "value": 1.75
+  },
+  {
+    "id": 10,
+    "label": "Extremely Active, Very Heavy Physical Work or Exercise Every Day, Professional/Olympic Athlete",
+    "value": 1.9
+  }
+]
