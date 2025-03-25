@@ -3,6 +3,7 @@ import pandas as pd
 
 class Filepath:
     MASS_BMR_AND_TDEE: str = 'data/mass_bmr_tdee.csv'
+    ACTIVITY_LEVELS: str = 'activity_levels.json'
 
 
 class Unit:
@@ -26,7 +27,7 @@ class SexAdjustment:
 
 
 def read_activity_levels() -> pd.DataFrame:
-    activity_levels = pd.read_json('activity_levels.json', dtype=dict(id=int, label=str, value=float))
+    activity_levels = pd.read_json(Filepath.ACTIVITY_LEVELS, dtype=dict(id=int, label=str, value=float))
     return activity_levels
 
 
