@@ -146,3 +146,7 @@ def create_mass_bmr_and_tdee_table() -> pd.DataFrame:
 
     df.to_csv(Filepath.MASS_BMR_AND_TDEE, index=False)
     return df
+
+
+def read_mass_bmr_and_tdee_table() -> pd.DataFrame:
+    return pd.read_csv(Filepath.MASS_BMR_AND_TDEE)
