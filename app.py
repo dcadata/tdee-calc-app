@@ -5,11 +5,13 @@ import tdee
 app = Flask(__name__)
 app.json.sort_keys = False
 
+_ACTIVITY_LEVELS_AS_LIST: list[str] = tdee.read_activity_levels().label.to_list()
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html', activity_levels=tdee.ACTIVITY_LEVELS.keys())
+        return render_template('index.html', activity_levels=_ACTIVITY_LEVELS_AS_LIST)
 
     payload = request.json
     weight = payload.get('weight')
