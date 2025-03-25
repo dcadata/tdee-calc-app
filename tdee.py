@@ -102,3 +102,43 @@ def get_changed_activity_level(idx: int = 0, **kwargs) -> dict[str, float]:
         new_activity_level = activity_levels.pop(0)
     new_activity_level = activity_levels.pop(idx)
     return change_activity_level(**kwargs, changed_activity_level=new_activity_level[0])
+
+
+def create_mass_bmr_and_tdee_table() -> pd.DataFrame:
+    data = []
+    for weight in range(100, 400, 10):
+        for height in range(4 * 12 + 10, 6 * 12 + 10, 2):
+            for age in range(20, 100, 10):
+                for sex in (Sex.F, Sex.M):
+                    for activity_level in range(4, 9):
+                        bmr, tdee = calculate_bmr_and_tdee(
+                            weight=weight,
+                            weight_unit=Unit.LB,
+                            height=height,
+                            height_unit=Unit.IN,
+                            age=age,
+                            sex=sex,
+                            activity_level=activity_level,
+                        )
+                        data.append(dict(
+                            weight=weight,
+                            height=height,
+                            age=age,
+                            sex=sex,
+                            activity_level=activity_level,
+                            bmr=bmr,
+                            tdee=tdee,
+                        ))
+
+    df = pd.DataFrame(data).sort_values('tdee')
+    df['bmi'] = df.weight / df.height ** 2 * 703
+
+    df = df[(df.bmi >= 15) & (df.bmi < 60)].copy()
+    df.loc[df.bmi >= 18.5, 'bmi_category'] = 'Healthy'
+    df.loc[df.bmi >= 25, 'bmi_category'] = 'Overweight'
+    for i in range(30, 55, 5):
+        df.loc[df.bmi >= i, 'bmi_category'] = f'Obese>{i}'
+    df.bmi_category = df.bmi_category.fillna('Underweight')
+
+    df.to_csv('bmr_and_tdee_table.csv', index=False)
+    return df
