@@ -150,3 +150,34 @@ def create_mass_bmr_and_tdee_table() -> pd.DataFrame:
 
 def read_mass_bmr_and_tdee_table() -> pd.DataFrame:
     return pd.read_csv(Filepath.MASS_BMR_AND_TDEE)
+
+
+def get_people_with_similar_bmr_and_tdee(
+        df: pd.DataFrame,
+        activity_level: int,
+        bmr: float = None,
+        tdee: float = None,
+        include_underweight: bool = True,
+        include_overweight: bool = True,
+        include_obese: bool = True,
+) -> pd.DataFrame:
+    band: float = 25
+
+    if bmr:
+        df = df[(df.bmr >= bmr - band) & (df.bmr <= bmr + band)]
+    if tdee:
+        df = df[(df.tdee >= tdee - band) & (df.tdee <= tdee + band)]
+
+    if activity_level:
+        df = df[df.activity_level == activity_level]
+
+    if not include_underweight:
+        df = df[df.bmi >= 18.5]
+    if not include_overweight:
+        df = df[df.bmi < 25]
+    if not include_obese:
+        df = df[df.bmi < 30]
+
+    df = df.drop(columns='bmi_category')
+    df.bmi = df.bmi.round(1)
+    return df
