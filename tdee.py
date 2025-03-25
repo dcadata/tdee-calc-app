@@ -1,6 +1,10 @@
 import pandas as pd
 
 
+class Filepath:
+    MASS_BMR_AND_TDEE: str = 'data/mass_bmr_tdee.csv'
+
+
 class Unit:
     LB: str = 'lb'
     IN: str = 'in'
@@ -140,5 +144,5 @@ def create_mass_bmr_and_tdee_table() -> pd.DataFrame:
         df.loc[df.bmi >= i, 'bmi_category'] = f'Obese>{i}'
     df.bmi_category = df.bmi_category.fillna('Underweight')
 
-    df.to_csv('bmr_and_tdee_table.csv', index=False)
+    df.to_csv(Filepath.MASS_BMR_AND_TDEE, index=False)
     return df
