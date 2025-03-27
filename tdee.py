@@ -103,7 +103,7 @@ def create_mass_bmr_and_tdee_table() -> pd.DataFrame:
         for height in range(4 * 12 + 10, 6 * 12 + 10, 2):
             for age in range(20, 100, 10):
                 for sex in (Sex.F, Sex.M):
-                    for activity_level in range(4, 9):
+                    for activity_level in Data.ACTIVITY_LEVELS.label:
                         bmr, tdee = calculate_bmr_and_tdee(
                             weight=weight,
                             weight_unit=Unit.LB,
@@ -143,7 +143,7 @@ def read_mass_bmr_and_tdee_table() -> pd.DataFrame:
 
 def get_people_with_similar_bmr_and_tdee(
         df: pd.DataFrame,
-        activity_level: int,
+        activity_level: str = None,
         bmr: float = None,
         tdee: float = None,
         include_underweight: bool = True,
