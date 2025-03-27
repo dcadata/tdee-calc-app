@@ -1,3 +1,4 @@
+import pandas as pd
 from flask import Flask, request, jsonify, render_template
 
 import tdee
@@ -5,13 +6,13 @@ import tdee
 app = Flask(__name__)
 app.json.sort_keys = False
 
-_ACTIVITY_LEVELS_AS_LIST: list[str] = tdee.read_activity_levels().label.to_list()
+MASS_BMR_AND_TDEE_TABLE: pd.DataFrame = tdee.read_mass_bmr_and_tdee_table()
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html', activity_levels=_ACTIVITY_LEVELS_AS_LIST)
+        return render_template('index.html', activity_levels=tdee.Data.ACTIVITY_LEVELS.label.to_list())
 
     payload = request.json
     weight = payload.get('weight')
@@ -52,9 +53,6 @@ def index():
         'If 10y younger': tdee.change_age(**params, age_change=-10),
         'If 10y older': tdee.change_age(**params, age_change=10),
         'If other sex': tdee.change_sex(**params),
-        'At +1 activity level': tdee.get_changed_activity_level(0, **params),
-        'At +2 activity level': tdee.get_changed_activity_level(1, **params),
-        'At +3 activity level': tdee.get_changed_activity_level(2, **params),
     }
 
     actual_bmr, actual_tdee = tdee.calculate_bmr_and_tdee(**params)
