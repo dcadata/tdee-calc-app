@@ -1,52 +1,52 @@
 [
   {
-    "id": 1,
+    "short_label": "Completely Paralyzed",
     "label": "Completely Paralyzed, Comatose, Unable to Move Without the Aid of Others",
-    "value": 1.0
+    "adjustment": 1.0
   },
   {
-    "id": 2,
+    "short_label": "Immobile",
     "label": "Immobile, Stationary with Some Arm Movement, Bedridden or Partially Paralyzed",
-    "value": 1.05
+    "adjustment": 1.05
   },
   {
-    "id": 3,
+    "short_label": "Constricted",
     "label": "Constricted Lifestyle, Movement is Limited to a Confined Space, Almost Always Sitting or Laying",
-    "value": 1.1
+    "adjustment": 1.1
   },
   {
-    "id": 4,
+    "short_label": "Working From Home",
     "label": "Working From Home with Little to No Travel, No Exercise, Some Walking, Mostly Sitting or Laying",
-    "value": 1.16
+    "adjustment": 1.16
   },
   {
-    "id": 5,
+    "short_label": "Sedentary",
     "label": "Sedentary Lifestyle, Little or No Exercise, Moderate Walking, Desk Job (Away from Home)",
-    "value": 1.2
+    "adjustment": 1.2
   },
   {
-    "id": 6,
+    "short_label": "Slightly Active",
     "label": "Slightly Active, Exercise or Light Sports 1 to 3 Days a Week, Light Jogging or Walking 3 to 4 Days a Week",
-    "value": 1.375
+    "adjustment": 1.375
   },
   {
-    "id": 7,
+    "short_label": "Lightly Active",
     "label": "Lightly Active, Exercise or Moderate Sports 2 to 3 Days a Week, Light Jogging or Walking 5 to 7 Days a Week",
-    "value": 1.425
+    "adjustment": 1.425
   },
   {
-    "id": 8,
+    "short_label": "Moderately Active",
     "label": "Moderately Active, Physical Work, Exercise, or Sports 4 to 5 Days a Week, Construction Laborer",
-    "value": 1.55
+    "adjustment": 1.55
   },
   {
-    "id": 9,
+    "short_label": "Very Active",
     "label": "Very Active, Heavy Physical Work, Exercise, or Sports 6 to 7 Days a Week, Hard Laborer",
-    "value": 1.75
+    "adjustment": 1.75
   },
   {
-    "id": 10,
+    "short_label": "Extremely Active",
     "label": "Extremely Active, Very Heavy Physical Work or Exercise Every Day, Professional/Olympic Athlete",
-    "value": 1.9
+    "adjustment": 1.9
   }
 ]
